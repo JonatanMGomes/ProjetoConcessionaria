@@ -32,7 +32,8 @@ namespace ProjetoConcessionaria
             var partida = GetPartida();
             if (partida == "injeção eletrônica")
             {
-                valorBase = valorBase * 1.1;
+                //valorBase = valorBase * 1.1;
+                valorBase = valorBase + (valorBase*0.1);
             }
             return valorBase;
         }
