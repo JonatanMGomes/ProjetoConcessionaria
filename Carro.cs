@@ -4,10 +4,11 @@ namespace ProjetoConcessionaria
     {
         private bool TransmissaoAutomatica { get; set; }
         private string Combustivel { get; set; }
-        public Carro(string marca, string modelo, string ano, int kilometragem, string cor, bool transmissaoAutomatica, string combustivel) : base(marca, modelo, ano, kilometragem, cor)
+        public Carro(string marca, string modelo, string ano, int kilometragem, double valor, string cor, bool transmissaoAutomatica, string combustivel) : base(marca, modelo, ano, kilometragem, cor, valor)
         {
             SetTransmissaoAutomatica(transmissaoAutomatica);
             SetCombustivel(combustivel);
+            SetValor(CalcularValor());
         }
         public bool GetTransmissaoAutomatica()
         {
@@ -24,6 +25,15 @@ namespace ProjetoConcessionaria
         public void SetCombustivel(string combustivel)
         {
             Combustivel = combustivel;
+        }
+        public override double CalcularValor()
+        {
+            double valorBase = GetValor();
+            if (GetTransmissaoAutomatica() == true)
+            {
+                valorBase = valorBase * 1.2;
+            }
+            return valorBase;
         }
     }
 }

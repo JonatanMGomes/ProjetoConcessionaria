@@ -8,13 +8,14 @@ namespace ProjetoConcessionaria
         protected int Kilometragem { get; set; }
         protected string Cor { get; set; }
         protected double Valor { get; set; }
-        public Veiculo(string marca, string modelo, string ano, int kilometragem, string cor)
+        public Veiculo(string marca, string modelo, string ano, int kilometragem, string cor, double valor)
         {
             SetMarca(marca);
             SetModelo(modelo);
             SetAno(ano);
             SetKilometragem(kilometragem);
             SetCor(cor);
+            SetValor(valor);
         }
         public string GetMarca()
         {
@@ -56,6 +57,18 @@ namespace ProjetoConcessionaria
         public void SetCor(string cor)
         {
             Cor = cor;
+        }
+        public double GetValor()
+        {
+            return Valor;
+        }
+        public void SetValor(double valor)
+        {
+            Valor = valor;
+        }
+        public virtual double CalcularValor()
+        {
+            return 0;
         }
     }
 }
