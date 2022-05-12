@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoConcessionaria", "Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoConcessionaria.TesteUnitario", "ProjetoConcessionaria.TesteUnitario\ProjetoConcessionaria.TesteUnitario.csproj", "{173FBD5F-9CC6-4ACA-8D40-1747EBD7C6B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoConcessionaria.Web", "ProjetoConcessionaria.Web\ProjetoConcessionaria.Web.csproj", "{381E6F20-6A0A-499E-8493-605C52B2310C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{173FBD5F-9CC6-4ACA-8D40-1747EBD7C6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{173FBD5F-9CC6-4ACA-8D40-1747EBD7C6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{173FBD5F-9CC6-4ACA-8D40-1747EBD7C6B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{381E6F20-6A0A-499E-8493-605C52B2310C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{381E6F20-6A0A-499E-8493-605C52B2310C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{381E6F20-6A0A-499E-8493-605C52B2310C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{381E6F20-6A0A-499E-8493-605C52B2310C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
