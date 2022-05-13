@@ -2,7 +2,11 @@ namespace ProjetoConcessionaria
 {
     public class Funcionario : Pessoa
     {
-        private string Cargo { get; set; }
+        public string Cargo { get; set; }
+        public Funcionario()
+        {
+            
+        }
         public Funcionario(string nome, string cpf, string dataNascimento, string cargo) : base(nome, cpf, dataNascimento)
         {
             SetCargo(cargo);
