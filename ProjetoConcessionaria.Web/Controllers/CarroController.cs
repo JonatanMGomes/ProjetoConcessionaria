@@ -17,8 +17,17 @@ namespace ProjetoConcessionaria.Web.Controllers
         [HttpPost("Set CarroNaLista")]
         public IActionResult SetCarroNaLista(Carro carro)
         {
-            CarrosDaClasse.Add(carro);
-            return Ok(CarrosDaClasse);
+            try
+            {
+                carro.ValidarAno(carro.GetAno());
+                carro.ValidarValor(carro.GetValor());
+                CarrosDaClasse.Add(carro);
+                return Ok(CarrosDaClasse);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("Delete CarroDaLista")]

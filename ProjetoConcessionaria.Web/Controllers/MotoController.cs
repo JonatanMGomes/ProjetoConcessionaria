@@ -17,8 +17,18 @@ namespace ProjetoConcessionaria.Web.Controllers
         [HttpPost("Set MotoNaLista")]
         public IActionResult SetMotoNaLista(Moto moto)
         {
-            MotosDaClasse.Add(moto);
-            return Ok(MotosDaClasse);
+            try
+            {
+                moto.ValidarAno(moto.GetAno());
+                moto.ValidarValor(moto.GetValor());
+                MotosDaClasse.Add(moto);
+                return Ok(MotosDaClasse);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         [HttpDelete("Delete MotoDaLista")]

@@ -1,3 +1,5 @@
+using ProjetoConcessionaria.MinhasExceptions;
+
 namespace ProjetoConcessionaria
 {
     public class Moto : Veiculo
@@ -40,6 +42,14 @@ namespace ProjetoConcessionaria
                 valorBase = valorBase + (valorBase*0.1);
             }
             return valorBase;
+        }
+        public override bool ValidarValor(double valor)
+        {
+            if (valor >= 2000)
+            {
+                return true;
+            }
+            throw new ValidacaoDados("valor inválido!");
         }
     }
 }

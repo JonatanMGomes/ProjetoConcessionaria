@@ -1,3 +1,5 @@
+using ProjetoConcessionaria.MinhasExceptions;
+
 namespace ProjetoConcessionaria
 {
     public class Veiculo
@@ -10,7 +12,7 @@ namespace ProjetoConcessionaria
         public double Valor { get; set; }
         public Veiculo()
         {
-            
+
         }
         public Veiculo(string marca, string modelo, string ano, int kilometragem, string cor, double valor)
         {
@@ -73,6 +75,22 @@ namespace ProjetoConcessionaria
         public virtual double CalcularValor()
         {
             return 0;
+        }
+        public bool ValidarAno(DateTime ano)
+        {
+            if (ano.Year >= 2004 && ano.Year <= DateTime.Today.Year)
+            {
+                return true;
+            }
+            throw new ValidacaoDados("Ano inválido!");
+        }
+        public virtual bool ValidarValor(double valor)
+        {
+            if (valor >= 0)
+            {
+                return true;
+            }
+            throw new ValidacaoDados("valor inválido!");
         }
     }
 }

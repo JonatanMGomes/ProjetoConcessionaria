@@ -1,3 +1,5 @@
+using ProjetoConcessionaria.MinhasExceptions;
+
 namespace ProjetoConcessionaria
 {
     public class Cliente : Pessoa
@@ -6,7 +8,7 @@ namespace ProjetoConcessionaria
         public string Telefone { get; set; }
         public Cliente()
         {
-            
+
         }
         public Cliente(string nome, string cpf, string dataNascimento, string email, string telefone) : base(nome, cpf, dataNascimento)
         {
@@ -27,7 +29,23 @@ namespace ProjetoConcessionaria
         }
         public void SetTelefone(string telefone)
         {
-            Telefone = telefone;
+                Telefone = telefone;
+        }
+        public bool ValidarTelefone(string telefone)
+        {
+            if (telefone.Length > 8 && telefone.Length < 15)
+            {
+                return true;
+            }
+            throw new ValidacaoDados("Telefone inválido!");
+        }
+        public bool ValidarEmail(string email)
+        {
+            if (email.Contains("@"))
+            {
+                return true;
+            }
+            throw new ValidacaoDados("email inválido!");
         }
     }
 }
