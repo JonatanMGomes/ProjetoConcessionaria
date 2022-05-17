@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProjetoConcessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers
 {
@@ -6,23 +7,22 @@ namespace ProjetoConcessionaria.Web.Controllers
     [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
-        public static List<Cliente> ClientesDaClasse { get; set; } = new List<Cliente>();
+        public static List<ClienteDTO> ClientesDaClasseDTO { get; set; } = new List<ClienteDTO>();
 
         [HttpGet("Get ClientesDaLista")]
         public IActionResult GetClientesDaLista()
         {
-            return Ok(ClientesDaClasse);
+            return Ok(ClientesDaClasseDTO);
         }
 
         [HttpPost("Set ClienteNaLista")]
-        public IActionResult SetClienteNaLista(Cliente cliente)
+        public IActionResult SetClienteNaLista(ClienteDTO clienteDto)
         {
             try
             {
-                cliente.ValidarTelefone(cliente.GetTelefone());
-                cliente.ValidarEmail(cliente.GetEmail());
-                ClientesDaClasse.Add(cliente);
-                return Ok(ClientesDaClasse);
+                var cliente = new Cliente(clienteDto.Nome, clienteDto.CPF, clienteDto.DataNascimento.ToString(), clienteDto.Email, clienteDto.Telefone);
+                ClientesDaClasseDTO.Add(clienteDto);
+                return Ok(ClientesDaClasseDTO);
             }
             catch (System.Exception ex)
             {
@@ -33,8 +33,8 @@ namespace ProjetoConcessionaria.Web.Controllers
         [HttpDelete("Delete ClienteDaLista")]
         public IActionResult DeleteClienteDaLista()
         {
-            ClientesDaClasse.RemoveAt(ClientesDaClasse.Count - 1);
-            return Ok(ClientesDaClasse);
+            ClientesDaClasseDTO.RemoveAt(ClientesDaClasseDTO.Count - 1);
+            return Ok(ClientesDaClasseDTO);
         }
     }
 }

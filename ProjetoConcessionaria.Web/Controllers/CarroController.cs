@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProjetoConcessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers
 {
@@ -6,23 +7,22 @@ namespace ProjetoConcessionaria.Web.Controllers
     [Route("[controller]")]
     public class CarroController : ControllerBase
     {
-        public static List<Carro> CarrosDaClasse { get; set; } = new List<Carro>();
+        public static List<CarroDTO> CarrosDaClasseDTO { get; set; } = new List<CarroDTO>();
 
         [HttpGet("Get CarrosDaLista")]
         public IActionResult GetCarrosDaLista()
         {
-            return Ok(CarrosDaClasse);
+            return Ok(CarrosDaClasseDTO);
         }
 
         [HttpPost("Set CarroNaLista")]
-        public IActionResult SetCarroNaLista(Carro carro)
+        public IActionResult SetCarroNaLista(CarroDTO carroDto)
         {
             try
             {
-                carro.ValidarAno(carro.GetAno());
-                carro.ValidarValor(carro.GetValor());
-                CarrosDaClasse.Add(carro);
-                return Ok(CarrosDaClasse);
+                var carro = new Carro(carroDto.Marca, carroDto.Modelo, carroDto.Ano.ToString(), carroDto.Kilometragem, carroDto.Valor, carroDto.Cor, carroDto.TransmissaoAutomatica, carroDto.Combustivel);
+                CarrosDaClasseDTO.Add(carroDto);
+                return Ok(CarrosDaClasseDTO);
             }
             catch (System.Exception ex)
             {
@@ -33,8 +33,8 @@ namespace ProjetoConcessionaria.Web.Controllers
         [HttpDelete("Delete CarroDaLista")]
         public IActionResult DeleteCarroDaLista()
         {
-            CarrosDaClasse.RemoveAt(CarrosDaClasse.Count - 1);
-            return Ok(CarrosDaClasse);
+            CarrosDaClasseDTO.RemoveAt(CarrosDaClasseDTO.Count - 1);
+            return Ok(CarrosDaClasseDTO);
         }
 
     }

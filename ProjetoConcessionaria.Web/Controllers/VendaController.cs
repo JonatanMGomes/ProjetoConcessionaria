@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProjetoConcessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers
 {
@@ -6,26 +7,30 @@ namespace ProjetoConcessionaria.Web.Controllers
     [Route("[controller]")]
     public class VendaController : ControllerBase
     {
-        public static List<Venda> VendasDaClasse { get; set; } = new List<Venda>();
+        public static List<VendaDTO> VendasDaClasseDTO { get; set; } = new List<VendaDTO>();
 
         [HttpGet("Get VendasDaLista")]
         public IActionResult GetVendasDaLista()
         {
-            return Ok(VendasDaClasse);
+            return Ok(VendasDaClasseDTO);
         }
 
         [HttpPost("Set VendaNaLista")]
-        public IActionResult SetVendaNaLista(Venda venda)
-        {
-            VendasDaClasse.Add(venda);
-            return Ok(VendasDaClasse);
+        public IActionResult SetVendaNaLista(VendaDTO vendaDto)
+        { 
+            var compradorTeste = new Cliente(vendaDto.CompradorDTO.Nome, vendaDto.CompradorDTO.CPF, vendaDto.CompradorDTO.DataNascimento.ToString(), vendaDto.CompradorDTO.Email, vendaDto.CompradorDTO.Telefone);
+            var vendedorTeste = new Funcionario(vendaDto.VendedorDTO.Nome, vendaDto.VendedorDTO.CPF, vendaDto.VendedorDTO.DataNascimento.ToString(), vendaDto.VendedorDTO.Cargo);
+            var veiculoTeste = new Veiculo(vendaDto.VeiculoDTO.Marca, vendaDto.VeiculoDTO.Modelo, vendaDto.VeiculoDTO.Ano.ToString(), vendaDto.VeiculoDTO.Kilometragem, vendaDto.VeiculoDTO.Cor, vendaDto.VeiculoDTO.Valor);
+            var venda = new Venda(compradorTeste, vendedorTeste, veiculoTeste, vendaDto.FormaPagamento);
+            VendasDaClasseDTO.Add(vendaDto);
+            return Ok(VendasDaClasseDTO);
         }
 
         [HttpDelete("Delete VendaDaLista")]
         public IActionResult DeleteVendaDaLista()
         {
-            VendasDaClasse.RemoveAt(VendasDaClasse.Count - 1);
-            return Ok(VendasDaClasse);
+            VendasDaClasseDTO.RemoveAt(VendasDaClasseDTO.Count - 1);
+            return Ok(VendasDaClasseDTO);
         }
     }
 }

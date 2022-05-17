@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProjetoConcessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers
 {
@@ -6,19 +7,20 @@ namespace ProjetoConcessionaria.Web.Controllers
     [Route("[controller]")]
     public class PessoaController : ControllerBase
     {
-        public static List<Pessoa> PessoasDaClasse { get; set; } = new List<Pessoa>();
+        public static List<PessoaDTO> PessoasDaClasseDTO { get; set; } = new List<PessoaDTO>();
 
         [HttpGet("Get PessoaDaClasse")]
         public IActionResult GetPessoaDaClasse()
         {
-            return Ok(PessoasDaClasse);
+            return Ok(PessoasDaClasseDTO);
         }
 
         [HttpPost("Set PessoaDaClasse")]
-        public IActionResult SetPessoaDaClasse(Pessoa pessoa)
+        public IActionResult SetPessoaDaClasse(PessoaDTO pessoaDto)
         {
-            PessoasDaClasse.Add(pessoa);
-            return Ok(PessoasDaClasse);
+            var pessoa = new Pessoa(pessoaDto.Nome, pessoaDto.CPF, pessoaDto.DataNascimento.ToString());
+            PessoasDaClasseDTO.Add(pessoaDto);
+            return Ok(PessoasDaClasseDTO);
         }
     }
 }
