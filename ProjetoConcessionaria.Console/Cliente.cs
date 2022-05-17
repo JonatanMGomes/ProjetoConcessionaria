@@ -6,7 +6,7 @@ namespace ProjetoConcessionaria
     {
         private string Email { get; set; }
         private string Telefone { get; set; }
-        
+
         public Cliente(string nome, string cpf, string dataNascimento, string email, string telefone) : base(nome, cpf, dataNascimento)
         {
             SetEmail(email);
@@ -18,6 +18,7 @@ namespace ProjetoConcessionaria
         }
         public void SetEmail(string email)
         {
+            ValidarEmail(email);
             Email = email;
         }
         public string GetTelefone()
@@ -26,7 +27,8 @@ namespace ProjetoConcessionaria
         }
         public void SetTelefone(string telefone)
         {
-                Telefone = telefone;
+            ValidarTelefone(telefone);
+            Telefone = telefone;
         }
         public bool ValidarTelefone(string telefone)
         {

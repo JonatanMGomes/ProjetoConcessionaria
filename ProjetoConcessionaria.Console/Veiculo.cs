@@ -43,6 +43,7 @@ namespace ProjetoConcessionaria
         public void SetAno(string ano)
         {
             var anoDesejado = DateTime.Parse(ano);
+            ValidarAno(anoDesejado);
             Ano = anoDesejado;
         }
         public int GetKilometragem()
@@ -67,6 +68,7 @@ namespace ProjetoConcessionaria
         }
         public void SetValor(double valor)
         {
+            ValidarValor(valor);
             Valor = valor;
         }
         public virtual double CalcularValor()
