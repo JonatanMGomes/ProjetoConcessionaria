@@ -2,13 +2,10 @@ namespace ProjetoConcessionaria
 {
     public class Pessoa
     {
-        public string Nome { get; set; }
-        public string CPF { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public Pessoa()
-        {
-
-        }
+        private string Nome { get; set; }
+        private string CPF { get; set; }
+        private DateTime DataNascimento { get; set; }
+        
         public Pessoa(string nome, string cpf, string dataNascimento)
         {
             SetNome(nome);

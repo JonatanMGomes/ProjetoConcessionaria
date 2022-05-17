@@ -4,12 +4,9 @@ namespace ProjetoConcessionaria
 {
     public class Cliente : Pessoa
     {
-        public string Email { get; set; }
-        public string Telefone { get; set; }
-        public Cliente()
-        {
-
-        }
+        private string Email { get; set; }
+        private string Telefone { get; set; }
+        
         public Cliente(string nome, string cpf, string dataNascimento, string email, string telefone) : base(nome, cpf, dataNascimento)
         {
             SetEmail(email);

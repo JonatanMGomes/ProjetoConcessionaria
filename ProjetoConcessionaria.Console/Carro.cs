@@ -4,12 +4,9 @@ namespace ProjetoConcessionaria
 {
     public class Carro : Veiculo
     {
-        public bool TransmissaoAutomatica { get; set; }
-        public string Combustivel { get; set; }
-        public Carro()
-        {
-
-        }
+        private bool TransmissaoAutomatica { get; set; }
+        private string Combustivel { get; set; }
+        
         public Carro(string marca, string modelo, string ano, int kilometragem, double valor, string cor, bool transmissaoAutomatica, string combustivel) : base(marca, modelo, ano, kilometragem, cor, valor)
         {
             SetTransmissaoAutomatica(transmissaoAutomatica);
