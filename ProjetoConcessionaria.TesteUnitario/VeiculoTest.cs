@@ -39,13 +39,13 @@ public class VeiculoTest
         Assert.Equal(anoEsperado, anoATestar);
     }
     [Fact]
-    public void TestandoSeVeiculoSalvaKilometragemCorretamente()
+    public void TestandoSeVeiculoSalvaQuilometragemCorretamente()
     {
         //Arrange - Preparando
         var kmEsperada = 0;
         var veiculoTest = new Veiculo("gm", "celta", "01/01/2020", kmEsperada, "cinza", 15000);
         //Act - Agindo
-        var kmATestar = veiculoTest.GetKilometragem();
+        var kmATestar = veiculoTest.GetQuilometragem();
         //Assert - 
         Assert.Equal(kmEsperada, kmATestar);
     }
@@ -76,7 +76,7 @@ public class VeiculoTest
     {
         //Arrange - Preparando
         var transmissaoEsperada = true;
-        var veiculoTest = new Carro("gm", "celta", "01/01/2020", 0, 15000, "cinza", transmissaoEsperada, "flex");
+        var veiculoTest = new Carro("gm", "celta", "01/01/2020", 0, "cinza", 15000, transmissaoEsperada, "flex");
         //Act - Agindo
         var transmissaoATestar = veiculoTest.GetTransmissaoAutomatica();
         //Assert - 
@@ -87,7 +87,7 @@ public class VeiculoTest
     {
         //Arrange - Preparando
         var combustivelEsperado = "flex";
-        var veiculoTest = new Carro("gm", "celta", "01/01/2020", 0, 15000, "cinza", true, combustivelEsperado);
+        var veiculoTest = new Carro("gm", "celta", "01/01/2020", 0, "cinza", 15000, true, combustivelEsperado);
         //Act - Agindo
         var combustivelATestar = veiculoTest.GetCombustivel();
         //Assert - 
@@ -98,7 +98,7 @@ public class VeiculoTest
     {
         //Arrange - Preparando
         var valorCalculadoEsperado = 12000;
-        var veiculoTest = new Carro("gm", "celta", "01/01/2020", 0, 10000, "cinza", true, "flex");
+        var veiculoTest = new Carro("gm", "celta", "01/01/2020", 0, "cinza", 10000, true, "flex");
         //Act - Agindo
         var valorCalculadoATestar = veiculoTest.GetValor();
         //Assert - 
@@ -110,7 +110,7 @@ public class VeiculoTest
         //Arrange - Preparando
         var valorIncorreto = 150;
         //Act e Assert
-        var exceptionTest = Assert.Throws<ValidacaoDados>(() => new Carro("gm", "celta", "01/01/2020", 0, valorIncorreto, "cinza", true, "flex"));
+        var exceptionTest = Assert.Throws<ValidacaoDados>(() => new Carro("gm", "celta", "01/01/2020", 0, "cinza", valorIncorreto, true, "flex"));
         Assert.Equal("valor inválido!", exceptionTest.Message);
     }
     [Fact]

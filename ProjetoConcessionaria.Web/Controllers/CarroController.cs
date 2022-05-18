@@ -20,7 +20,7 @@ namespace ProjetoConcessionaria.Web.Controllers
         {
             try
             {
-                var carro = new Carro(carroDto.Marca, carroDto.Modelo, carroDto.Ano.ToString(), carroDto.Kilometragem, carroDto.Valor, carroDto.Cor, carroDto.TransmissaoAutomatica, carroDto.Combustivel);
+                var carro = new Carro(carroDto.Marca, carroDto.Modelo, carroDto.Ano.ToString(), carroDto.Quilometragem, carroDto.Cor, carroDto.Valor,carroDto.TransmissaoAutomatica, carroDto.Combustivel);
                 CarrosDaClasseDTO.Add(carroDto);
                 return Ok(CarrosDaClasseDTO);
             }

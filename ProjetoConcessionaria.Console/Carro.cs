@@ -7,7 +7,7 @@ namespace ProjetoConcessionaria
         private bool TransmissaoAutomatica { get; set; }
         private string Combustivel { get; set; }
         
-        public Carro(string marca, string modelo, string ano, int kilometragem, double valor, string cor, bool transmissaoAutomatica, string combustivel) : base(marca, modelo, ano, kilometragem, cor, valor)
+        public Carro(string marca, string modelo, string ano, int Quilometragem, string cor, double valor, bool transmissaoAutomatica, string combustivel) : base(marca, modelo, ano, Quilometragem, cor, valor)
         {
             SetTransmissaoAutomatica(transmissaoAutomatica);
             SetCombustivel(combustivel);
@@ -44,7 +44,7 @@ namespace ProjetoConcessionaria
             {
                 return true;
             }
-            throw new ValidacaoDados("valor inválido!");
+            throw new ValidacaoDados("Valor inválido!");
         }
     }
 }

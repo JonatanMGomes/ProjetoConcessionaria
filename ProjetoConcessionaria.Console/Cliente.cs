@@ -44,7 +44,7 @@ namespace ProjetoConcessionaria
             {
                 return true;
             }
-            throw new ValidacaoDados("email inválido!");
+            throw new ValidacaoDados("Email inválido!");
         }
     }
 }

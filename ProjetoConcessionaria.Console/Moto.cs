@@ -7,7 +7,7 @@ namespace ProjetoConcessionaria
         private int Cilindrada { get; set; }
         private string Partida { get; set; }
         
-        public Moto(string marca, string modelo, string ano, int kilometragem, string cor, double valor, int cilindrada, string partida) : base(marca, modelo, ano, kilometragem, cor, valor)
+        public Moto(string marca, string modelo, string ano, int Quilometragem, string cor, double valor, int cilindrada, string partida) : base(marca, modelo, ano, Quilometragem, cor, valor)
         {
             SetCilindrada(cilindrada);
             SetPartida(partida);
@@ -46,7 +46,7 @@ namespace ProjetoConcessionaria
             {
                 return true;
             }
-            throw new ValidacaoDados("valor inválido!");
+            throw new ValidacaoDados("Valor inválido!");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace ProjetoConcessionaria.Web.Controllers
         {
             try
             {
-                var moto = new Moto(motoDto.Marca, motoDto.Modelo, motoDto.Ano.ToString(), motoDto.Kilometragem, motoDto.Cor, motoDto.Valor, motoDto.Cilindrada, motoDto.Partida);
+                var moto = new Moto(motoDto.Marca, motoDto.Modelo, motoDto.Ano.ToString(), motoDto.Quilometragem, motoDto.Cor, motoDto.Valor, motoDto.Cilindrada, motoDto.Partida);
                 MotosDaClasseDTO.Add(motoDto);
                 return Ok(MotosDaClasseDTO);
             }

@@ -17,13 +17,21 @@ namespace ProjetoConcessionaria.Web.Controllers
 
         [HttpPost("Set VendaNaLista")]
         public IActionResult SetVendaNaLista(VendaDTO vendaDto)
-        { 
-            var compradorTeste = new Cliente(vendaDto.CompradorDTO.Nome, vendaDto.CompradorDTO.CPF, vendaDto.CompradorDTO.DataNascimento.ToString(), vendaDto.CompradorDTO.Email, vendaDto.CompradorDTO.Telefone);
-            var vendedorTeste = new Funcionario(vendaDto.VendedorDTO.Nome, vendaDto.VendedorDTO.CPF, vendaDto.VendedorDTO.DataNascimento.ToString(), vendaDto.VendedorDTO.Cargo);
-            var veiculoTeste = new Veiculo(vendaDto.VeiculoDTO.Marca, vendaDto.VeiculoDTO.Modelo, vendaDto.VeiculoDTO.Ano.ToString(), vendaDto.VeiculoDTO.Kilometragem, vendaDto.VeiculoDTO.Cor, vendaDto.VeiculoDTO.Valor);
-            var venda = new Venda(compradorTeste, vendedorTeste, veiculoTeste, vendaDto.FormaPagamento);
-            VendasDaClasseDTO.Add(vendaDto);
-            return Ok(VendasDaClasseDTO);
+        {
+            try
+            {
+                var compradorTeste = new Cliente(vendaDto.CompradorDTO.Nome, vendaDto.CompradorDTO.CPF, vendaDto.CompradorDTO.DataNascimento.ToString(), vendaDto.CompradorDTO.Email, vendaDto.CompradorDTO.Telefone);
+                var vendedorTeste = new Funcionario(vendaDto.VendedorDTO.Nome, vendaDto.VendedorDTO.CPF, vendaDto.VendedorDTO.DataNascimento.ToString(), vendaDto.VendedorDTO.Cargo);
+                var veiculoTeste = new Veiculo(vendaDto.VeiculoDTO.Marca, vendaDto.VeiculoDTO.Modelo, vendaDto.VeiculoDTO.Ano.ToString(), vendaDto.VeiculoDTO.Quilometragem, vendaDto.VeiculoDTO.Cor, vendaDto.VeiculoDTO.Valor);
+                var venda = new Venda(compradorTeste, vendedorTeste, veiculoTeste, vendaDto.FormaPagamento);
+                VendasDaClasseDTO.Add(vendaDto);
+                return Ok(VendasDaClasseDTO);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         [HttpDelete("Delete VendaDaLista")]
