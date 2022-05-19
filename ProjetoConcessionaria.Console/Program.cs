@@ -1,4 +1,6 @@
-﻿namespace ProjetoConcessionaria
+﻿using ProjetoConcessionaria.Lib.Models;
+
+namespace ProjetoConcessionaria
 {
     public class Program
     {

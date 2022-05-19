@@ -1,4 +1,5 @@
-using ProjetoConcessionaria.MinhasExceptions;
+using ProjetoConcessionaria.Lib.MinhasExceptions;
+using ProjetoConcessionaria.Lib.Models;
 using Xunit;
 
 namespace ProjetoConcessionaria.TesteUnitario

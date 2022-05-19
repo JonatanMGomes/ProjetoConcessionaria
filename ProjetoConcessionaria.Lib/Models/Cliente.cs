@@ -1,6 +1,6 @@
-using ProjetoConcessionaria.MinhasExceptions;
+using ProjetoConcessionaria.Lib.MinhasExceptions;
 
-namespace ProjetoConcessionaria
+namespace ProjetoConcessionaria.Lib.Models
 {
     public class Cliente : Pessoa
     {

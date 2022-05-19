@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProjetoConcessionaria.Lib.Models;
 using ProjetoConcessionaria.Web.DTOs;
 
 namespace ProjetoConcessionaria.Web.Controllers

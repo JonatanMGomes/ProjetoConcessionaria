@@ -1,4 +1,4 @@
-namespace ProjetoConcessionaria
+namespace ProjetoConcessionaria.Lib.Models
 {
     public class Funcionario : Pessoa
     {
