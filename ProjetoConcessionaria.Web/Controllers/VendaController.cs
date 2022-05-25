@@ -9,6 +9,11 @@ namespace ProjetoConcessionaria.Web.Controllers
     public class VendaController : ControllerBase
     {
         public static List<VendaDTO> VendasDaClasseDTO { get; set; } = new List<VendaDTO>();
+        public ILogger<VendaController> Log { get; set; }
+        public VendaController(ILogger<VendaController> log)
+        {
+            Log = log;
+        }
 
         [HttpGet("Get VendasDaLista")]
         public IActionResult GetVendasDaLista()
@@ -30,6 +35,7 @@ namespace ProjetoConcessionaria.Web.Controllers
             }
             catch (System.Exception ex)
             {
+                Log.LogError(ex.Message);
                 return BadRequest(ex.Message);
             }
 

@@ -9,6 +9,11 @@ namespace ProjetoConcessionaria.Web.Controllers
     public class CarroController : ControllerBase
     {
         public static List<CarroDTO> CarrosDaClasseDTO { get; set; } = new List<CarroDTO>();
+        public ILogger<CarroController> Log { get; set; }
+        public CarroController(ILogger<CarroController> log)
+        {
+            Log = log;
+        }
 
         [HttpGet("Get CarrosDaLista")]
         public IActionResult GetCarrosDaLista()
@@ -21,12 +26,13 @@ namespace ProjetoConcessionaria.Web.Controllers
         {
             try
             {
-                var carro = new Carro(carroDto.Marca, carroDto.Modelo, carroDto.Ano.ToString(), carroDto.Quilometragem, carroDto.Cor, carroDto.Valor,carroDto.TransmissaoAutomatica, carroDto.Combustivel);
+                var carro = new Carro(carroDto.Marca, carroDto.Modelo, carroDto.Ano.ToString(), carroDto.Quilometragem, carroDto.Cor, carroDto.Valor, carroDto.TransmissaoAutomatica, carroDto.Combustivel);
                 CarrosDaClasseDTO.Add(carroDto);
                 return Ok(CarrosDaClasseDTO);
             }
             catch (System.Exception ex)
             {
+                Log.LogError(ex.Message);
                 return BadRequest(ex.Message);
             }
         }

@@ -9,6 +9,11 @@ namespace ProjetoConcessionaria.Web.Controllers
     public class MotoController : ControllerBase
     {
         public static List<MotoDTO> MotosDaClasseDTO { get; set; } = new List<MotoDTO>();
+        public ILogger<MotoController> Log { get; set; }
+        public MotoController(ILogger<MotoController> log)
+        {
+            Log = log;
+        }
 
         [HttpGet("Get MotosDaLista")]
         public IActionResult GetMotosDaLista()
@@ -27,6 +32,7 @@ namespace ProjetoConcessionaria.Web.Controllers
             }
             catch (System.Exception ex)
             {
+                Log.LogError(ex.Message);
                 return BadRequest(ex.Message);
             }
 

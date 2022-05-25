@@ -9,6 +9,11 @@ namespace ProjetoConcessionaria.Web.Controllers
     public class ClienteController : ControllerBase
     {
         public static List<ClienteDTO> ClientesDaClasseDTO { get; set; } = new List<ClienteDTO>();
+        public ILogger<ClienteController> Log { get; set; }
+        public ClienteController(ILogger<ClienteController> log)
+        {
+            Log = log;
+        }
 
         [HttpGet("Get ClientesDaLista")]
         public IActionResult GetClientesDaLista()
@@ -27,6 +32,7 @@ namespace ProjetoConcessionaria.Web.Controllers
             }
             catch (System.Exception ex)
             {
+                Log.LogError(ex.Message);
                 return BadRequest(ex.Message);
             }
         }
