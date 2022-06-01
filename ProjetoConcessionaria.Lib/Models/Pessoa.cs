@@ -2,6 +2,7 @@ namespace ProjetoConcessionaria.Lib.Models
 {
     public class Pessoa
     {
+        public int Id { get; set; }
         private string Nome { get; set; }
         private string CPF { get; set; }
         private DateTime DataNascimento { get; set; }

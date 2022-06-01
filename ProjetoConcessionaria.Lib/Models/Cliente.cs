@@ -6,6 +6,7 @@ namespace ProjetoConcessionaria.Lib.Models
     {
         private string Email { get; set; }
         private string Telefone { get; set; }
+        public virtual List<Venda> Compras { get; set; }
 
         public Cliente(string nome, string cpf, string dataNascimento, string email, string telefone) : base(nome, cpf, dataNascimento)
         {

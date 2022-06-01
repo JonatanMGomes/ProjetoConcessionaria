@@ -3,6 +3,7 @@ namespace ProjetoConcessionaria.Lib.Models
     public class Funcionario : Pessoa
     {
         private string Cargo { get; set; }
+        public virtual List<Venda> Vendas { get; set; }
         
         public Funcionario(string nome, string cpf, string dataNascimento, string cargo) : base(nome, cpf, dataNascimento)
         {

@@ -2,17 +2,22 @@ namespace ProjetoConcessionaria.Lib.Models
 {
     public class Venda
     {
+        public int Id { get; set; }
         private Cliente Comprador { get; set; }
         private Funcionario Vendedor { get; set; }
-        private Veiculo Veiculo { get; set; }
+        public virtual Veiculo Veiculo { get; set; }
+        public virtual Carro Carro { get; set; }
+        public virtual Moto Moto { get; set; }
         private string FormaPagamento { get; set; }
         private double ValorFinal { get; set; }
+        public int IdCliente { get; set; }
+        public int IdFuncionario { get; set; }
        
         public Venda(Cliente comprador, Funcionario vendedor, Veiculo veiculo, string formaPagamento)
         {
             SetComprador(comprador);
             SetVendedor(vendedor);
-            SetVeiculo(veiculo);
+            SetVeiculos(veiculo);
             SetFormaPagamento(formaPagamento);
             SetValorFinal(AplicarDesconto());
         }
@@ -36,7 +41,7 @@ namespace ProjetoConcessionaria.Lib.Models
         {
             return Veiculo;
         }
-        public void SetVeiculo(Veiculo veiculo)
+        public void SetVeiculos(Veiculo veiculo)
         {
             Veiculo = veiculo;
         }
@@ -57,12 +62,17 @@ namespace ProjetoConcessionaria.Lib.Models
             ValorFinal = valorFinal;
         }
         public double AplicarDesconto(){
-            double valorVeiculo = Veiculo.GetValor();
+            /* double valorARetornar = 0;
+            for (var contador = 0; contador < Veiculos.Count; contador++)
+            {
+                valorARetornar = valorARetornar + Veiculos[contador].GetValor();
+            }*/
+            double valorARetornar = Veiculo.GetValor();
             string cargoGerente = "gerente";
             if(Vendedor.GetCargo().Contains(cargoGerente)){
-                valorVeiculo = valorVeiculo * 0.95;
+                valorARetornar = valorARetornar * 0.95;
             }
-            return valorVeiculo;
+            return valorARetornar;
         }
     }
 }

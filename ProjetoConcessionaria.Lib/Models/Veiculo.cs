@@ -4,12 +4,15 @@ namespace ProjetoConcessionaria.Lib.Models
 {
     public class Veiculo
     {
+        public int Id { get; set; }
         private string Marca { get; set; }
         private string Modelo { get; set; }
         private DateTime Ano { get; set; }
         private int Quilometragem { get; set; }
         private string Cor { get; set; }
         private double Valor { get; set; }
+        public int IdVenda { get; set; }
+        public Venda Venda { get; set; }
     
         public Veiculo(string marca, string modelo, string ano, int Quilometragem, string cor, double valor)
         {
